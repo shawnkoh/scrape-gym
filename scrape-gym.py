@@ -1,5 +1,6 @@
 import logging
 
+import arrow
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
@@ -15,5 +16,5 @@ driver.get("https://smartentry.org/queue/book/e1tpy")
 
 XPATH = "/html/body/div[4]/div[1]/div/div[2]"
 queue = driver.find_element(by=By.XPATH, value=XPATH)
-
-print(queue.text)
+time = arrow.now().format("HH:mm")
+print(f"{queue.text} - {time}")
